@@ -2,11 +2,15 @@ package com.app.api.health.dto;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-@Getter
+@Data
 @Builder
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class HealthCheckResponseDTO {
 
 	private String health;

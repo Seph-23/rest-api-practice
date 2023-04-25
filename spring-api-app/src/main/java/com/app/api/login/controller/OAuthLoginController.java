@@ -13,6 +13,7 @@ import com.app.api.login.dto.OAuthLoginDTO;
 import com.app.api.login.service.OAuthLoginService;
 import com.app.api.login.validator.OAuthValidator;
 import com.app.domain.member.constant.MemberType;
+import com.app.global.util.AuthorizationHeaderUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,7 +30,7 @@ public class OAuthLoginController {
 		HttpServletRequest httpServletRequest) {
 
 		String authorizationHeader = httpServletRequest.getHeader("Authorization");
-		oAuthValidator.validateAuthorization(authorizationHeader);
+		AuthorizationHeaderUtils.validateAuthorization(authorizationHeader);
 		oAuthValidator.validateMemberType(oauthLoginRequestDTO.getMemberType());
 
 		String accessToken = authorizationHeader.split(" ")[1];

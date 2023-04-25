@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import com.app.domain.common.BaseEntity;
 import com.app.domain.member.constant.MemberType;
 import com.app.domain.member.constant.Role;
+import com.app.global.jwt.dto.JwtTokenDTO;
+import com.app.global.util.DateTimeUtils;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -61,5 +63,10 @@ public class Member extends BaseEntity {
 		this.memberName = memberName;
 		this.profile = profile;
 		this.role = role;
+	}
+
+	public void updateRefreshToken(final JwtTokenDTO jwtTokenDto) {
+		this.refreshToken = jwtTokenDto.getRefreshToken();
+		this.tokenExpirationTime = DateTimeUtils.convertToLoalDateTime(jwtTokenDto.getRefreshTokenExpireTime());
 	}
 }

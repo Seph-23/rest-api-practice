@@ -2,7 +2,6 @@ package com.cafein.backend.api.member.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +11,6 @@ import com.cafein.backend.global.jwt.service.TokenManager;
 import com.cafein.backend.global.resolver.memberinfo.MemberInfo;
 import com.cafein.backend.global.resolver.memberinfo.MemberInfoDTO;
 
-import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 
 @RestController

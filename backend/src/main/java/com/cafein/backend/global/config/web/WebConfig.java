@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.cafein.backend.global.interceptor.AdminAuthorizationInterceptor;
 import com.cafein.backend.global.interceptor.AuthenticationInterceptor;
 import com.cafein.backend.global.resolver.memberinfo.MemberInfoArgumentResolver;
 
@@ -20,6 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
 
 	private final AuthenticationInterceptor authenticationInterceptor;
 	private final MemberInfoArgumentResolver memberInfoArgumentResolver;
+	private final AdminAuthorizationInterceptor adminAuthorizationInterceptor;
 
 	@Override
 	public void addCorsMappings(final CorsRegistry registry) {
@@ -45,6 +47,10 @@ public class WebConfig implements WebMvcConfigurer {
 				"/api/access-token/issue",
 				"/api/logout",
 				"/api/health");
+
+		registry.addInterceptor(adminAuthorizationInterceptor)
+			.order(2)
+			.addPathPatterns("/api/admin/**");
 	}
 
 	@Override
